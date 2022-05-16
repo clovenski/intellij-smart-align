@@ -19,18 +19,18 @@
     </extensions>
 
     <actions>
-        <group id="SmartAlignActions">
+        <group id="SmartAlignActions"
+               text="Smart Align"
+               description="Align your code vertically">
             <action id="code.align.assignment" class="com.github.ttyniwa.intellij.plugin.align.AssignmentCodeAlignerAction"
                     text="Align by equals"
                     description="Align your code by equals"
                     icon="AllIcons.Vcs.Equal">
-                <add-to-group group-id="SmartAlignActions" anchor="last"/>
             </action>
             <action id="code.align.custom" class="com.github.ttyniwa.intellij.plugin.align.CustomCodeAlignerAction"
-                    text="Align by..."
+                    text="Align by ..."
                     description="Align your code by a custom string"
                     icon="AllIcons.Actions.More">
-                <add-to-group group-id="SmartAlignActions" anchor="last"/>
             </action>
 
             <add-to-group group-id="NavBarToolBar" anchor="first"/>

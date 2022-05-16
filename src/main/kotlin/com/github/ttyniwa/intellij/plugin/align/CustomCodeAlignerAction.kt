@@ -62,7 +62,7 @@ class AlignByCustomStringDialogWrapper() : DialogWrapper(true) {
 
     override fun createCenterPanel(): JComponent? {
         val panel = JPanel(GridLayout(2,1)) // # any way to make this a dynamic layout?
-        panel.setSize(350, 150)
+        panel.setSize(350, 150) // # somehow not working
 
         // input for the custom delimiter
         customDelimiterInput = JTextField()

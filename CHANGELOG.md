@@ -16,3 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   - overhaul plugin to become half smart
   - simplify algorithm
   - expose align by equals and align by custom delimiter action buttons in nav toolbar
+
+## [2.0.1]
+### Fixed
+  - `cannot add action twice` error
