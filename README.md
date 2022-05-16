@@ -1,8 +1,12 @@
-# Smart Align
+# (Half) Smart Align
 
 A IntelliJ plugin to provide better vertical alignment.  
-Align your code by assignment(`=`, `+=`, `-=`, `*=`, `/=`), colon(`:`) and comma(`,`). also support trailing comment.  
-You don't have to select what to be aligned, this plugin automatically figure it out.  
+Align your code by assignment(`=`, `+=`, `-=`, `*=`, `/=`), colon(`:`) and comma(`,`). also support trailing comment.
+
+This has been overhauled from [this repo](https://github.com/ttyniwa/intellij-smart-align) to simplify the algorithm
+and make its behavior closer to [this plugin for VS](https://github.com/cpmcgrath/codealignment).
+Essentially it is now less smart and provides the ability to
+align by a custom string inputted by the user in a popup.
 
 ## Compatibility
 
@@ -10,34 +14,13 @@ IntelliJ IDEA, Android Studio. (and maybe other JetBrains families.)
 
 ## How to use
 
-Place your cursor at where you want your code to be aligned, and invoke the Align command via `Code` -> `Smart Align` or Press `Alt + Shift + -`.  
-Then the code will be automatically aligned.
+Select the lines of code to be aligned, and click on the action
+buttons in the nav toolbar. This should be near the run actions
+at the top right of the IDE (on IntelliJ).
 
-## Screenshots
-
-### align around cursor
-
-Detects and aligns lines that use the same symbol group from the line around the cursor.
-
-<img src="screen_shots/around_cursor.gif" width="500">
-
-### align selected text
-
-<img src="screen_shots/selected_text.gif" width="500">
-
-### more examples
-
-[Unit test code](https://github.com/ttyniwa/intellij-smart-align/blob/master/src/test/kotlin/com/github/ttyniwa/intellij/plugin/align/AlignerSpek.kt)
-
-## Tips
-
-Because `Reformat Code` and `Smart Align` conflicts, I recommend enabling formatter markers in comments via `Settings` -> `Editor` -> `Code Style` -> `Fromatter Control` -> `Enable formatter markers in comments`
-
-```gradle
-// @formatter:off
-write code here to be aligned.
-// @formatter:on
-```
+There is a button for aligning by equals, otherwise another
+button to open a prompt for you to enter a custom delimiter
+for the alignment (ex. aligning by `(` or `:` or `return`, etc.).
 
 ## Contribute
 
@@ -48,3 +31,5 @@ write code here to be aligned.
 ## Acknowledgements
 
 Intellij-smart-align is heavily inspired by [Better Align for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=wwm.better-align)
+
+and this overhaul was heavily inspired by heavy usage of [Code alignment in Visual Studio](https://github.com/cpmcgrath/codealignment)

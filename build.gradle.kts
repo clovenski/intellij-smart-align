@@ -25,7 +25,6 @@ version = "1.0.0"
 repositories {
     mavenCentral()
     jcenter()
-    maven(url = "https://kotlin.bintray.com/kotlinx/")
 }
 
 dependencies {

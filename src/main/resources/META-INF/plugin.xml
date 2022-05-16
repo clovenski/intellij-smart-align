@@ -19,10 +19,21 @@
     </extensions>
 
     <actions>
-        <action id="code.align" class="com.github.ttyniwa.intellij.plugin.align.CodeAlignerAction" text="Smart Align"
-                description="Align your code">
-            <add-to-group group-id="CodeFormatGroup" anchor="last"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="alt shift MINUS"/>
-        </action>
+        <group id="SmartAlignActions">
+            <action id="code.align.assignment" class="com.github.ttyniwa.intellij.plugin.align.AssignmentCodeAlignerAction"
+                    text="Align by equals"
+                    description="Align your code by equals"
+                    icon="AllIcons.Vcs.Equal">
+                <add-to-group group-id="SmartAlignActions" anchor="last"/>
+            </action>
+            <action id="code.align.custom" class="com.github.ttyniwa.intellij.plugin.align.CustomCodeAlignerAction"
+                    text="Align by..."
+                    description="Align your code by a custom string"
+                    icon="AllIcons.Actions.More">
+                <add-to-group group-id="SmartAlignActions" anchor="last"/>
+            </action>
+
+            <add-to-group group-id="NavBarToolBar" anchor="first"/>
+        </group>
     </actions>
 </idea-plugin>
