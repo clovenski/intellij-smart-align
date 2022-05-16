@@ -10,3 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   - Alignment feature.
   - auto detect lines to align.
   - select and align text.
+
+## [2.0.0]
+### Changed
+  - overhaul plugin to become half smart
+  - simplify algorithm
+  - expose align by equals and align by custom delimiter action buttons in nav toolbar
