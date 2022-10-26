@@ -1,7 +1,6 @@
 # (Half) Smart Align
 
-A IntelliJ plugin to provide better vertical alignment.  
-Align your code by assignment(`=`, `+=`, `-=`, `*=`, `/=`), colon(`:`) and comma(`,`). also support trailing comment.
+An IntelliJ plugin to provide better vertical alignment.
 
 This has been overhauled from [this repo](https://github.com/ttyniwa/intellij-smart-align) to simplify the algorithm
 and make its behavior closer to [this plugin for VS](https://github.com/cpmcgrath/codealignment).
@@ -12,21 +11,38 @@ align by a custom string inputted by the user in a popup.
 
 IntelliJ IDEA, Android Studio. (and maybe other JetBrains families.)
 
+## How to install
+
+Go to the [releases page](https://github.com/clovenski/intellij-smart-align/releases)
+and download the latest version of the plugin. Then, install the plugin
+by dragging the zip file onto Intellij.
+
+If dragging and dropping doesn't work, you can also go to the
+plugins settings in Intellij and click the gear icon to install
+a plugin from the disk - selecting the zip file you downloaded.
+
 ## How to use
 
 Select the lines of code to be aligned, and click on the action
 buttons in the nav toolbar. This should be near the run actions
 at the top right of the IDE (on IntelliJ).
 
-There is a button for aligning by equals, otherwise another
-button to open a prompt for you to enter a custom delimiter
-for the alignment (ex. aligning by `(` or `:` or `return`, etc.).
+There is a button for aligning by equals, period, braces or brackets.
+Otherwise, there are other buttons to open a prompt for you to enter
+a custom delimiter for the alignment (ex. aligning by `(` or `:` or `,` or `return`, etc.).
+
+To quickly align by equals, highlight the lines to align, and then use the shortcut
+`CTRL+ALT+SHIFT+EQUALS`.
+
+To quickly open the prompt to align by a custom string, highlight the lines to align,
+and then use the shortcut `ALT+EQUALS`, and to default the prompt to align from the
+caret position, use `ALT+SHIFT+EQUALS`.
 
 ## Contribute
 
-* `gradle test`
-* `gradle runIde`
-* `gradle buildPlugin`
+* `gradle test` to run tests
+* `gradle runIde` to run a new IDE instance and test out the plugin
+* `gradle buildPlugin` to build the plugin distribution
 
 ## Acknowledgements
 
