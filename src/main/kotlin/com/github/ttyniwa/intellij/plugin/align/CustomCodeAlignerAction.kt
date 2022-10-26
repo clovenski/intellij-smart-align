@@ -12,22 +12,22 @@ import javax.swing.JTextField
 /**
  * Action handler for custom code alignment (custom delimiter).
  *
- * @constructor Create empty Custom code aligner action
+ * @property caretPosCbSelected whether the caret position checkbox is initially selected on render
  */
-class CustomCodeAlignerAction : CodeAlignerActionBase() {
+open class CustomCodeAlignerAction(private val caretPosCbSelected: Boolean = false) : CodeAlignerActionBase() {
 
     /** Custom delimiter to use. */
     private var customDelimiter: String = ""
 
-    override val delimiter: String
-        get() = customDelimiter
+    override val delimiters: Iterable<String>
+        get() = listOf(customDelimiter)
 
     override fun actionPerformed(e: AnActionEvent) {
         // require selected text, otherwise nothing to do
         e.getData(PlatformDataKeys.EDITOR)?.selectionModel?.selectedText
             ?: return
 
-        val dialog = AlignByCustomStringDialogWrapper()
+        val dialog = AlignByCustomStringDialogWrapper(caretPosCbSelected)
         if (dialog.showAndGet()) {
             customDelimiter = dialog.getCustomDelimiter()
 
@@ -45,9 +45,9 @@ class CustomCodeAlignerAction : CodeAlignerActionBase() {
 /**
  * Dialog wrapper specific for code alignment with a custom delimiter.
  *
- * @constructor Create empty Align by custom string dialog wrapper
+ * @property caretPosCbSelected whether the caret position checkbox is initially selected on render
  */
-class AlignByCustomStringDialogWrapper() : DialogWrapper(true) {
+class AlignByCustomStringDialogWrapper(private val caretPosCbSelected: Boolean = false) : DialogWrapper(true) {
     init {
         title = "Enter string to align by"
         init()
@@ -69,7 +69,7 @@ class AlignByCustomStringDialogWrapper() : DialogWrapper(true) {
         panel.add(customDelimiterInput)
 
         // checkbox for whether to align from the caret position
-        caretPosCb = JCheckBox("Align from caret position")
+        caretPosCb = JCheckBox("Align from caret position", caretPosCbSelected)
         panel.add(caretPosCb)
 
         return panel

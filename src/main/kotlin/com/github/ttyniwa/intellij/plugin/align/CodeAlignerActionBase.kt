@@ -16,9 +16,9 @@ abstract class CodeAlignerActionBase : AnAction() {
     private val delimiterAligner = StringDelimiterAligner() // TODO: IoC?
 
     /**
-     * Delimiter to use for alignment.
+     * Delimiters to use for alignment.
      */
-    protected abstract val delimiter: String
+    protected abstract val delimiters: Iterable<String>
 
     /** Indicates whether we should align starting from the caret position. */
     protected var alignFromCaretPos = false
@@ -42,21 +42,23 @@ abstract class CodeAlignerActionBase : AnAction() {
 
         val lineSeparator = getLineSeparator(document.text)
 
-        // compute the new, aligned text
-        val alignedText = delimiterAligner.align(
-            getLines(document.text, lineSeparator, IntRange(startLine, endLine)),
-            delimiter,
-            if (alignFromCaretPos) endPos.column else 0
-        )
+        for (delimiter in delimiters) {
+            // compute the new, aligned text
+            val alignedText = delimiterAligner.align(
+                getLines(document.text, lineSeparator, IntRange(startLine, endLine)),
+                delimiter,
+                if (alignFromCaretPos) endPos.column else 0
+            )
 
-        // make the edit
-        replaceString(
-            project,
-            document,
-            alignedText.joinToString(lineSeparator),
-            document.getLineStartOffset(startLine),
-            document.getLineEndOffset  (endLine)
-        )
+            // make the edit
+            replaceString(
+                project,
+                document,
+                alignedText.joinToString(lineSeparator),
+                document.getLineStartOffset(startLine),
+                document.getLineEndOffset  (endLine)
+            )
+        }
     }
 
     /**

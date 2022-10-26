@@ -11,26 +11,54 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-<!--        <projectConfigurable groupId="tools" displayName="Smart Align Plugin"-->
-<!--                             id="preferences.SmartAlignConfigurable"-->
-<!--                             instance="com.github.ttyniwa.intellij.plugin.align.settings.SmartAlignConfigurable"/>-->
-<!--        <projectService id="pluginState"-->
-<!--                        serviceImplementation="com.github.ttyniwa.intellij.plugin.align.settings.PluginConfig"/>-->
+        <!--        <projectConfigurable groupId="tools" displayName="Smart Align Plugin"-->
+        <!--                             id="preferences.SmartAlignConfigurable"-->
+        <!--                             instance="com.github.ttyniwa.intellij.plugin.align.settings.SmartAlignConfigurable"/>-->
+        <!--        <projectService id="pluginState"-->
+        <!--                        serviceImplementation="com.github.ttyniwa.intellij.plugin.align.settings.PluginConfig"/>-->
     </extensions>
 
     <actions>
         <group id="SmartAlignActions"
                text="Smart Align"
                description="Align your code vertically">
-            <action id="code.align.assignment" class="com.github.ttyniwa.intellij.plugin.align.AssignmentCodeAlignerAction"
+            <action id="code.align.assignment"
+                    class="com.github.ttyniwa.intellij.plugin.align.AssignmentCodeAlignerAction"
                     text="Align by equals"
                     description="Align your code by equals"
                     icon="AllIcons.Vcs.Equal">
+                <keyboard-shortcut first-keystroke="control alt shift EQUALS" keymap="$default"/>
+            </action>
+            <action id="code.align.dot"
+                    class="com.github.ttyniwa.intellij.plugin.align.PeriodCodeAlignerAction"
+                    text="Align by period"
+                    description="Align your code by period"
+                    icon="AllIcons.Debugger.Db_muted_breakpoint">
+            </action>
+            <action id="code.align.bracket"
+                    class="com.github.ttyniwa.intellij.plugin.align.BracketCodeAlignerAction"
+                    text="Align by bracket"
+                    description="Align your code by bracket"
+                    icon="AllIcons.Json.Array">
+            </action>
+            <action id="code.align.brace"
+                    class="com.github.ttyniwa.intellij.plugin.align.BraceCodeAlignerAction"
+                    text="Align by brace"
+                    description="Align your code by brace"
+                    icon="AllIcons.Json.Object">
+            </action>
+            <action id="code.align.caret"
+                    class="com.github.ttyniwa.intellij.plugin.align.CaretCodeAlignerAction"
+                    text="Align from caret"
+                    description="Align your code from caret position"
+                    icon="AllIcons.Actions.Play_last">
+                <keyboard-shortcut first-keystroke="alt shift EQUALS" keymap="$default"/>
             </action>
             <action id="code.align.custom" class="com.github.ttyniwa.intellij.plugin.align.CustomCodeAlignerAction"
                     text="Align by ..."
                     description="Align your code by a custom string"
                     icon="AllIcons.Actions.More">
+                <keyboard-shortcut first-keystroke="alt EQUALS" keymap="$default"/>
             </action>
 
             <add-to-group group-id="NavBarToolBar" anchor="first"/>

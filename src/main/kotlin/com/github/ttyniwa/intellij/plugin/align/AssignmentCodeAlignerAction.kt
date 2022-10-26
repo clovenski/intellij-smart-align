@@ -6,5 +6,5 @@ package com.github.ttyniwa.intellij.plugin.align
  * @constructor Create empty Assignment code aligner action
  */
 class AssignmentCodeAlignerAction : CodeAlignerActionBase() {
-    override val delimiter = "="
+    override val delimiters = listOf("=")
 }
